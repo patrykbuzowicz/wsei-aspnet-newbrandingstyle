@@ -12,16 +12,16 @@ namespace NewBrandingStyle.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(CompanyModel company)
+        public IActionResult Submit(CompanyModel model)
         {
-            var viewModel = new CompanyAddedViewModel
+            var result = new CompanyAddedViewModel
             {
-                NumberOfCharsInName = company.Name.Length,
-                NumberOfCharsInDescription = company.Description.Length,
-                IsHidden = !company.IsVisible
+                NumberOfCharsInName = model.Name.Length,
+                NumberOfCharsInDescription = model.Description.Length,
+                IsHidden = !model.IsVisible
             };
 
-            return View("CompanyAdded", viewModel);
+            return View("CompanyAddedConfirmation", result);
         }
     }
 }

@@ -4,21 +4,20 @@
 
 <h2>Add new company</h2>
 
-@using(Html.BeginForm())
-{
+<form asp-action="Submit" method="post">
     <div class="form-group">
-        @Html.LabelFor(x => x.Name, "Company name")
-        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        <label asp-for="Name">Company name</label>
+        <input asp-for="Name" class="form-control" />
     </div>
     <div class="form-group">
-        @Html.LabelFor(x => x.Description, "Company description")
-        @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+        <label asp-for="Description">Company description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
     </div>
     <div class="form-group form-check">
-        @Html.CheckBoxFor(x => x.IsVisible, new { @class = "form-check-input" })
-        @Html.LabelFor(x => x.IsVisible, "Visible?", new { @class = "form-check-label" })
+        <input asp-for="IsVisible" class="form-check-input" />
+        <label asp-for="IsVisible" class="form-check-label">Should this be visible?</label>
     </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Add Company</button>
+        <div>
+        <input type="submit" value="Save this" />
     </div>
-}
+</form>
