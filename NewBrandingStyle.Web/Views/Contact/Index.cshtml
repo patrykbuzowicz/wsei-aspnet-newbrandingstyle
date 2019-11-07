@@ -1,12 +1,13 @@
 ﻿@model ContactModel
 
+@* this will be rendered at the bottom of the page. please find RenderSection("Scripts") in Shared/_Layout.cshtml *@
 @section Scripts {
     <script src="~/js/contact.js"></script>
 }
 
 <h1>Hey there! Want to get in touch?</h1>
 
-@* these two alerts are hidden by default. either one will be shown using JavaScript upon form submission*@
+@* these two alerts are hidden by default. either one will be shown using JavaScript upon form submission *@
 <div id="alert-success" class="d-none alert alert-primary" role="alert">Thank you for your feedback!</div>
 <div id="alert-error" class="d-none alert alert-danger" role="alert">Ooops! We had an issue saving your feedback.</div>
 
@@ -14,11 +15,11 @@
 
 <form id="contact-form">
     <div class="form-group">
-        <label asp-for="Email" />
+        <label asp-for="Email">Your email address:</label>
         <input asp-for="Email" class="form-control"/>
     </div>
     <div class="form-group">
-        <label asp-for="Message" />
+        <label asp-for="Message">What's on your mind?</label>
         <input asp-for="Message" class="form-control"/>
     </div>
     <div>
