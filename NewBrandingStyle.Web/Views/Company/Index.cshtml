@@ -1,23 +1,21 @@
-﻿@model CompanyModel
+﻿@model IEnumerable<NewBrandingStyle.Web.Entities.CompanyEntity>
 
-<h1>Company management</h1>
-
-<h2>Add new company</h2>
-
-<form asp-action="Submit" method="post">
-    <div class="form-group">
-        <label asp-for="Name">Company name</label>
-        <input asp-for="Name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Description">Company description</label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-    </div>
-    <div class="form-group form-check">
-        <input asp-for="IsVisible" class="form-check-input" />
-        <label asp-for="IsVisible" class="form-check-label">Should this be visible?</label>
-    </div>
-    <div>
-        <input class="btn btn-primary" type="submit" value="Save this" />
-    </div>
-</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Is visible?</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var company in Model)
+        {
+            <tr>
+                <td>@company.Name</td>
+                <td>@company.Description</td>
+                <td>@(company.IsVisible ? "Yes" : "No")</td>
+            </tr>
+        }
+    </tbody>
+</table>

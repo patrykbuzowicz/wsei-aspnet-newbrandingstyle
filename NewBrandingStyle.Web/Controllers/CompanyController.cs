@@ -17,20 +17,20 @@ namespace NewBrandingStyle.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> Index()
         {
             var companies = await context.Companies.ToListAsync();
             return View(companies);
         }
 
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Submit(CompanyModel model)
+        public async Task<IActionResult> Add(CompanyModel model)
         {
             var entity = new CompanyEntity { 
                 Name = model.Name,
