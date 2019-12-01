@@ -9,17 +9,17 @@ namespace NewBrandingStyle.Web.Controllers
 {
     public class CompanyController : Controller
     {
-        private readonly ApplicationDbContext context;
+        private readonly ApplicationDbContext _context;
 
         public CompanyController(ApplicationDbContext context)
         {
-            this.context = context;
+            _context = context;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var companies = await context.Companies.ToListAsync();
+            var companies = await _context.Companies.ToListAsync();
             return View(companies);
         }
 
@@ -32,23 +32,17 @@ namespace NewBrandingStyle.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(CompanyModel model)
         {
-            var entity = new CompanyEntity { 
+            var entity = new CompanyEntity
+            {
                 Name = model.Name,
                 Description = model.Description,
                 IsVisible = model.IsVisible
             };
 
-            context.Companies.Add(entity);
-            await context.SaveChangesAsync();
+            _context.Companies.Add(entity);
+            await _context.SaveChangesAsync();
 
-            var result = new CompanyAddedViewModel
-            {
-                NumberOfCharsInName = model.Name.Length,
-                NumberOfCharsInDescription = model.Description.Length,
-                IsHidden = !model.IsVisible
-            };
-
-            return View("CompanyAddedConfirmation", result);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
