@@ -1,25 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using NewBrandingStyle.Web.Contexts;
-using NewBrandingStyle.Web.Entities;
 using NewBrandingStyle.Web.Models;
+using NewBrandingStyle.Web.Services;
 using System.Threading.Tasks;
 
 namespace NewBrandingStyle.Web.Controllers
 {
     public class CompanyController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly CompanyService _service;
 
-        public CompanyController(ApplicationDbContext context)
+        public CompanyController(CompanyService service)
         {
-            _context = context;
+            _service = service;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var companies = await _context.Companies.ToListAsync();
+            var companies = await _service.GetAll();
             return View(companies);
         }
 
@@ -32,15 +30,7 @@ namespace NewBrandingStyle.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(CompanyModel model)
         {
-            var entity = new CompanyEntity
-            {
-                Name = model.Name,
-                Description = model.Description,
-                IsVisible = model.IsVisible
-            };
-
-            _context.Companies.Add(entity);
-            await _context.SaveChangesAsync();
+            await _service.Add(model);
 
             return RedirectToAction(nameof(Index));
         }

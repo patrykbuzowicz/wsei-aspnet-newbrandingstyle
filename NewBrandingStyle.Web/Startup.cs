@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NewBrandingStyle.Web.Contexts;
+using NewBrandingStyle.Web.Services;
 
 namespace NewBrandingStyle.Web
 {
@@ -25,6 +26,8 @@ namespace NewBrandingStyle.Web
             services.AddDbContext<ApplicationDbContext>(config =>
                 config.UseSqlServer(Configuration.GetConnectionString("App"))
             );
+
+            services.AddTransient<CompanyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
