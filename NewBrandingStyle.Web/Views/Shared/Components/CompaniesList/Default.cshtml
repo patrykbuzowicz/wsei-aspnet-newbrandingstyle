@@ -1,0 +1,9 @@
+﻿@model IEnumerable<string>
+
+<div>Short list of Companies:</div>
+<ul>
+    @foreach (var companyName in Model)
+    {
+        <li>@companyName</li>
+    }
+</ul>
