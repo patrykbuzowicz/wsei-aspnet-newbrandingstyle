@@ -7,17 +7,13 @@ namespace NewBrandingStyle.Web.ViewComponents
 {
     public class CompaniesList : ViewComponent
     {
-        private readonly CompanyService _service;
-
-        public CompaniesList(CompanyService service)
-        {
-            _service = service;
-        }
-
-        public async Task<IViewComponentResult> InvokeAsync(int max = 10)
+        public async Task<IViewComponentResult> InvokeAsync(int max)
         {
             // TODO ...
-            return View("Empty");
+            var companies = Enumerable.Range(1, 20)
+                .Take(max)
+                .Select(x => $"company-{x}");
+            return View("Default", companies);
         }
     }
 }

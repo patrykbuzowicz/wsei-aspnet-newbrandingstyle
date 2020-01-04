@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("styles", false)
+</head>
+<body>
+    <div>this is a div from a layout</div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

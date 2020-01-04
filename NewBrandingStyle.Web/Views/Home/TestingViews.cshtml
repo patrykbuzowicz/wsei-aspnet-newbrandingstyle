@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_MyLayout";
+
+    var title = "My Title";
+}
+
+<alert alert-color="danger">this is my custom alert</alert>
+
+<partial name="_MyPartial" />
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <partial name="_MyPartial" model="Layout" />
+
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@section styles {
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+}
+
+<partial name="_MyPartial" model="@("danger")" />
+
+@await Component.InvokeAsync("CompaniesList", new { maxx = 5 })
