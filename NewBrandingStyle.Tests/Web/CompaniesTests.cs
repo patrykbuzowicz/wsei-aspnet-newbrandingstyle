@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc.Testing;
+using NewBrandingStyle.Tests.Web.Setup;
 using NewBrandingStyle.Web;
 using NUnit.Framework;
 using System.Net;

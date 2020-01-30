@@ -7,7 +7,14 @@ using System.Threading.Tasks;
 
 namespace NewBrandingStyle.Web.Services
 {
-    public class CompanyService
+    public interface ICompanyService
+    {
+        Task<IReadOnlyList<CompanyEntity>> GetAll();
+
+        Task Add(CompanyModel model);
+    }
+
+    public class CompanyService : ICompanyService
     {
         private readonly ApplicationDbContext _context;
 

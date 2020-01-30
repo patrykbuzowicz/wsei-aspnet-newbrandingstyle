@@ -7,9 +7,9 @@ namespace NewBrandingStyle.Web.Controllers
 {
     public class CompanyController : Controller
     {
-        private readonly CompanyService _service;
+        private readonly ICompanyService _service;
 
-        public CompanyController(CompanyService service)
+        public CompanyController(ICompanyService service)
         {
             _service = service;
         }

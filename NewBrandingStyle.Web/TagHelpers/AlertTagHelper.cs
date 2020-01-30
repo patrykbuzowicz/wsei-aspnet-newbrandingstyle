@@ -8,9 +8,9 @@ namespace NewBrandingStyle.Web.TagHelpers
     [HtmlTargetElement("alert")]
     public class AlertTagHelper : TagHelper
     {
-        private readonly CompanyService service;
+        private readonly ICompanyService service;
 
-        public AlertTagHelper(CompanyService service)
+        public AlertTagHelper(ICompanyService service)
         {
             this.service = service;
         }
