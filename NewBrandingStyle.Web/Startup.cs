@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NewBrandingStyle.Web.Contexts;
+using NewBrandingStyle.Web.Middlewares;
 using NewBrandingStyle.Web.Services;
 
 namespace NewBrandingStyle.Web
