@@ -1,0 +1,13 @@
+﻿@using NewBrandingStyle.Web.Services;
+@model string
+
+@inject TransientService Transient
+@inject ScopedService Scoped
+@inject SingletonService Singleton
+
+<div style="margin: 1rem;">
+    <div>@Model</div>
+    <div>Transient: @Transient.GetMessage()</div>
+    <div>Scoped: @Scoped.GetMessage()</div>
+    <div>Singleton: @Singleton.GetMessage()</div>
+</div>
