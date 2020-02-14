@@ -2,6 +2,11 @@
 
 <h1>Companies list</h1>
 
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-primary">@Html.Raw(ViewBag.Message)</div>
+}
+
 <div class="row mb-4">
     <div class="col-6">
         <a class="btn btn-primary" asp-action="Add">Add new Company</a>
@@ -28,7 +33,7 @@
         @foreach (var company in Model)
         {
             <tr>
-                <td>@company.Name</td>
+                <td>@Html.Raw(company.Name)</td>
                 <td>@company.Description</td>
                 <td>@(company.IsVisible ? "Yes" : "No")</td>
             </tr>
