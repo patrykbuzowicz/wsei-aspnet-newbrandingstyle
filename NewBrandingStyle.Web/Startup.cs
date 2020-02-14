@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -30,8 +31,13 @@ namespace NewBrandingStyle.Web
             );
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => options.LoginPath = "/auth/login");
-            
+                .AddCookie(options =>
+                {
+                    // just to demonstrate CSRF, bring back old behavior
+                    options.Cookie.SameSite = SameSiteMode.None;
+                    options.LoginPath = "/auth/login";
+                });
+
             services.AddAuthorization(options => options.AddPolicy("authenticated", policy =>
             {
                 policy.AuthenticationSchemes.Add(CookieAuthenticationDefaults.AuthenticationScheme);

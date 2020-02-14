@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewBrandingStyle.Web", "NewBrandingStyle.Web\NewBrandingStyle.Web.csproj", "{8C4C4A38-F2A6-44A9-B5C1-06BF08651743}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewBrandingStyle.Tests", "NewBrandingStyle.Tests\NewBrandingStyle.Tests.csproj", "{3B8A2497-10D3-4355-BB3A-0222D11BE5E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewBrandingStyle.Tests", "NewBrandingStyle.Tests\NewBrandingStyle.Tests.csproj", "{3B8A2497-10D3-4355-BB3A-0222D11BE5E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaliciousApp", "MaliciousApp\MaliciousApp.csproj", "{9FC5C7F1-1B4F-41E9-9194-EC27D66C89AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3B8A2497-10D3-4355-BB3A-0222D11BE5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B8A2497-10D3-4355-BB3A-0222D11BE5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B8A2497-10D3-4355-BB3A-0222D11BE5E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FC5C7F1-1B4F-41E9-9194-EC27D66C89AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FC5C7F1-1B4F-41E9-9194-EC27D66C89AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FC5C7F1-1B4F-41E9-9194-EC27D66C89AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FC5C7F1-1B4F-41E9-9194-EC27D66C89AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

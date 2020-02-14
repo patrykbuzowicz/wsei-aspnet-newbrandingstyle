@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace NewBrandingStyle.Web
+namespace MaliciousApp
 {
     public class Program
     {

@@ -35,5 +35,10 @@ namespace NewBrandingStyle.Tests.Web.Setup
 
             return Task.FromResult((IReadOnlyList<CompanyEntity>)companies);
         }
+
+        public Task<IReadOnlyList<CompanyEntity>> Search(string query)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
