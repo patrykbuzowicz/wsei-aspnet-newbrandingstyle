@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NewBrandingStyle.Web.Contexts;
-using NewBrandingStyle.Web.Middlewares;
 using NewBrandingStyle.Web.Services;
+using System.Security.Claims;
 
 namespace NewBrandingStyle.Web
 {
@@ -28,11 +29,23 @@ namespace NewBrandingStyle.Web
                 config.UseSqlServer(Configuration.GetConnectionString("App"))
             );
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => options.LoginPath = "/auth/login");
+            
+            services.AddAuthorization(options => options.AddPolicy("authenticated", policy =>
+            {
+                policy.AuthenticationSchemes.Add(CookieAuthenticationDefaults.AuthenticationScheme);
+                policy.RequireClaim(ClaimTypes.Name);
+            }));
+
+            services.AddHttpContextAccessor();
+
             services.AddTransient<ICompanyService, CompanyService>();
 
             services.AddTransient<TransientService>();
             services.AddScoped<ScopedService>();
             services.AddSingleton<SingletonService>();
+            services.AddTransient<AuthService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +62,8 @@ namespace NewBrandingStyle.Web
 
             app.UseStaticFiles();
 
+            app.UseAuthentication();
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

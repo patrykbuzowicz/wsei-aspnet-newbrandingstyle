@@ -35,6 +35,11 @@
                         </li>
                     </ul>
                 </div>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <span>Welcome @User.Identity.Name</span>
+                }
             </div>
         </nav>
     </header>

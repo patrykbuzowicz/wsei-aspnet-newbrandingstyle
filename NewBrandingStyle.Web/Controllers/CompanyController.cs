@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NewBrandingStyle.Web.Models;
 using NewBrandingStyle.Web.Services;
 using System.Threading.Tasks;
 
 namespace NewBrandingStyle.Web.Controllers
 {
+    [Authorize(Policy = "authenticated")]
     public class CompanyController : Controller
     {
         private readonly ICompanyService _service;
@@ -15,9 +17,12 @@ namespace NewBrandingStyle.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([FromQuery] string q)
         {
-            var companies = await _service.GetAll();
+            var companies = string.IsNullOrEmpty(q)
+                ? await _service.GetAll()
+                : await _service.Search(q);
+
             return View(companies);
         }
 

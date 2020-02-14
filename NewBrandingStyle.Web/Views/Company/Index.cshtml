@@ -2,8 +2,18 @@
 
 <h1>Companies list</h1>
 
-<div class="mb-4">
-    <a asp-action="Add">Add new Company</a>
+<div class="row mb-4">
+    <div class="col-6">
+        <a class="btn btn-primary" asp-action="Add">Add new Company</a>
+    </div>
+    <div class="col-6">
+        <form method="get" class="form-inline float-right">
+            <div class="form-group">
+                <input class="form-control mr-1" type="text" name="q" />
+            </div>
+            <input class="btn btn-primary" type="submit" value="Search"/>
+        </form>
+    </div>
 </div>
 
 <table class="table">
